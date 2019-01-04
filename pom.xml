@@ -36,7 +36,7 @@
 		<java.version>1.6</java.version>
 		<jv.version>1.6</jv.version>
 		<maven.version>3.0.3</maven.version>
-		<jakson.version>2.2.0</jakson.version>
+		<jakson.version>2.9.8</jakson.version>
 	</properties>
 
 	<developers>
