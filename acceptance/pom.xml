@@ -28,7 +28,7 @@
 		<mongo.user>${MONGO_DB_USER}</mongo.user>
 		<mongo.password>${MONGO_DB_PASSWORD}</mongo.password>
 		<!-- Static test configuration -->
-		<thucydides.version>0.9.205</thucydides.version>
+		<thucydides.version>0.9.208</thucydides.version>
         <webdriver.driver>htmlunit</webdriver.driver>
 		<grapes.logfile.path>${project.build.directory}/install/log/server.log</grapes.logfile.path>
 		<grapes.user.notifier>notifier</grapes.user.notifier>
@@ -146,39 +146,26 @@
 						<phase>initialize</phase>
 						<configuration>
 							<target>
-								<mkdir dir="${project.build.directory}/install/log" />
-								<copy file="${basedir}/src/test/resources/template-server.conf"
-									tofile="${project.build.directory}/install/conf/server.conf" />
-								<replace file="${project.build.directory}/install/conf/server.conf"
-									token="##SERVER_PORT##" value="${grapes.server.port}" />
-								<replace file="${project.build.directory}/install/conf/server.conf"
-									token="##SERVER_ADMIN_PORT##" value="${grapes.server.admin.port}" />
-								<replace file="${project.build.directory}/install/conf/server.conf"
-									token="##MONGO_HOST##" value="${mongo.host}" />
-								<replace file="${project.build.directory}/install/conf/server.conf"
-									token="##MONGO_PORT##" value="${mongo.port}" />
-								<replace file="${project.build.directory}/install/conf/server.conf"
-									token="##MONGO_USER##" value="${mongo.user}" />
-								<replace file="${project.build.directory}/install/conf/server.conf"
-									token="##MONGO_PASSWORD##" value="${mongo.password}" />
-								<replace file="${project.build.directory}/install/conf/server.conf"
-									token="##MONGO_DATABASE##" value="${grapes.database.name}" />
-								<replace file="${project.build.directory}/install/conf/server.conf"
-									token="##MONGO_DATABASE##" value="${grapes.database.name}" />
-								<replace file="${project.build.directory}/install/conf/server.conf"
-								         token="##LOG_FILE_PATH##" value="${grapes.logfile.path}" />
-								<replace file="${project.build.directory}/install/conf/server.conf"
-								         token="##GRAPES_ADMIN_USER##" value="${grapes.user.admin}" />
-								<replace file="${project.build.directory}/install/conf/server.conf"
-								         token="##GRAPES_ADMIN_PASSWORD##" value="${grapes.user.admin.pwd}" />
-								<java jar="${project.build.directory}/install/lib/server.jar"
-									fork="true" spawn="true" maxmemory="512m">
-									<arg value="server" />
-									<arg value="${project.build.directory}/install/conf/server.conf" />
+								<mkdir dir="${project.build.directory}/install/log"/>
+								<copy file="${basedir}/src/test/resources/template-server.conf" tofile="${project.build.directory}/install/conf/server.conf"/>
+								<replace file="${project.build.directory}/install/conf/server.conf" token="##SERVER_PORT##" value="${grapes.server.port}"/>
+								<replace file="${project.build.directory}/install/conf/server.conf" token="##SERVER_ADMIN_PORT##" value="${grapes.server.admin.port}"/>
+								<replace file="${project.build.directory}/install/conf/server.conf" token="##MONGO_HOST##" value="${mongo.host}"/>
+								<replace file="${project.build.directory}/install/conf/server.conf" token="##MONGO_PORT##" value="${mongo.port}"/>
+								<replace file="${project.build.directory}/install/conf/server.conf" token="##MONGO_USER##" value="${mongo.user}"/>
+								<replace file="${project.build.directory}/install/conf/server.conf" token="##MONGO_PASSWORD##" value="${mongo.password}"/>
+								<replace file="${project.build.directory}/install/conf/server.conf" token="##MONGO_DATABASE##" value="${grapes.database.name}"/>
+								<replace file="${project.build.directory}/install/conf/server.conf" token="##MONGO_DATABASE##" value="${grapes.database.name}"/>
+								<replace file="${project.build.directory}/install/conf/server.conf" token="##LOG_FILE_PATH##" value="${grapes.logfile.path}"/>
+								<replace file="${project.build.directory}/install/conf/server.conf" token="##GRAPES_ADMIN_USER##" value="${grapes.user.admin}"/>
+								<replace file="${project.build.directory}/install/conf/server.conf" token="##GRAPES_ADMIN_PASSWORD##" value="${grapes.user.admin.pwd}"/>
+								<java jar="${project.build.directory}/install/lib/server.jar" fork="true" spawn="true" maxmemory="512m">
+									<arg value="server"/>
+									<arg value="${project.build.directory}/install/conf/server.conf"/>
 								</java>
-								<echo message="Starting Grapes server ..." level="info" />
+								<echo message="Starting Grapes server ..." level="info"/>
 								<sleep seconds="5"/>
-								<echo message="Adding test credentials ..." level="info" />
+								<echo message="Adding test credentials ..." level="info"/>
 								<exec executable="curl">
 								    <arg value="-X"/>
 								    <arg value="POST"/>
@@ -245,7 +232,7 @@
 								    <arg value="role=artifact_checker"/>
 								    <arg value="http://localhost:${grapes.server.admin.port}/tasks/addRole"/>
 								</exec>
-								<echo message="Adding default corporate groupId for tests ..." level="info" />
+								<echo message="Adding default corporate groupId for tests ..." level="info"/>
 								<exec executable="curl">
 								    <arg value="-X"/>
 								    <arg value="POST"/>
